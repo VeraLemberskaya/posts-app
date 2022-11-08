@@ -1,34 +1,12 @@
-import { FC } from "react";
-import {
-  Checkbox,
-  CheckboxProps,
-  FormControlLabel,
-  FormHelperText,
-} from "@mui/material";
-import { useField } from "formik";
+import { Checkbox, CheckboxProps, FormControlLabel } from "@mui/material";
 
 type Props = Omit<CheckboxProps, "name"> & {
   name: string;
-  label: string;
+  label?: string;
 };
 
-const CheckboxControl: FC<Props> = (props) => {
-  const { name, label } = props;
-  const [field, meta] = useField({ name, type: "checkbox" });
-
-  const isError = !!(meta.touched && meta.error);
-
-  return (
-    <>
-      <FormControlLabel
-        control={<Checkbox {...props} {...field} />}
-        label={label}
-      />
-      <FormHelperText error={isError}>
-        {isError ? meta.error : " "}
-      </FormHelperText>
-    </>
-  );
+const CheckboxControl = ({ label, ...props }: Props) => {
+  return <FormControlLabel control={<Checkbox {...props} />} label={label} />;
 };
 
 export default CheckboxControl;

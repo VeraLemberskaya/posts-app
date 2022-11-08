@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import {
   IconButton,
   InputAdornment,
@@ -7,9 +7,24 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+type PasswordPostfixProps = {
+  isVisible: boolean;
+  onClick: () => void;
+};
+
+const PasswordPostfix = ({ isVisible, onClick }: PasswordPostfixProps) => {
+  return (
+    <InputAdornment position="end" sx={{ cursor: "pointer" }}>
+      <IconButton onClick={onClick}>
+        {isVisible ? <VisibilityOff /> : <Visibility />}
+      </IconButton>
+    </InputAdornment>
+  );
+};
+
 type Props = Omit<TextFieldProps, "type">;
 
-const PasswordTextField: FC<Props> = (props) => {
+const PasswordTextField = (props: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const toggleVisibility = () => {
@@ -21,11 +36,7 @@ const PasswordTextField: FC<Props> = (props) => {
       type={visible ? "text" : "password"}
       InputProps={{
         endAdornment: (
-          <InputAdornment position="end" sx={{ cursor: "pointer" }}>
-            <IconButton onClick={toggleVisibility}>
-              {visible ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          </InputAdornment>
+          <PasswordPostfix isVisible={visible} onClick={toggleVisibility} />
         ),
       }}
       {...props}
