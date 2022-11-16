@@ -1,11 +1,10 @@
-import { FC } from "react";
 import { Typography, SxProps, Theme } from "@mui/material";
 
 type Props = {
   sx?: SxProps<Theme>;
 };
 
-const Copyright: FC<Props> = (props) => {
+const Copyright = (props: Props) => {
   const currentYear = new Date().getFullYear();
 
   return (

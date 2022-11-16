@@ -1,12 +1,11 @@
-import { Avatar, SxProps, Theme } from "@mui/material";
+import { Avatar } from "@mui/material";
 
-import LogoIcon from "../../assets/logo.svg";
+import LogoIcon from "../assets/logo.svg";
 
 type LogoSize = "small" | "medium" | "large";
 
 type Props = {
   size?: LogoSize;
-  sx?: SxProps<Theme>;
 };
 
 const LOGO_SIZES = {
@@ -24,10 +23,8 @@ const LOGO_SIZES = {
   },
 };
 
-const Logo = ({ size = "medium", sx }: Props) => {
-  return (
-    <Avatar src={LogoIcon} alt="logo" sx={{ ...LOGO_SIZES[size], ...sx }} />
-  );
+const Logo = ({ size = "medium" }: Props) => {
+  return <Avatar src={LogoIcon} alt="logo" sx={{ ...LOGO_SIZES[size] }} />;
 };
 
 export default Logo;

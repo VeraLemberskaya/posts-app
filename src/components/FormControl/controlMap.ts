@@ -17,7 +17,7 @@ export type ControlProps = {
 
 export type Control = FC<ControlProps>;
 
-export const CONTROL_MAP: { [key in ControlType]: Control } = {
+export const CONTROL_MAP: Record<ControlType, Control> = {
   text: TextField,
   password: PasswordTextField,
   checkbox: CheckboxControl,

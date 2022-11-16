@@ -1,13 +1,15 @@
-import { FC } from "react";
-import { Box, Button, Grid, Link } from "@mui/material";
+import { Button, Grid, Link } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { Form, Formik } from "formik";
 
-import { LoginModel, initialValues } from "../loginModel";
-import { validationSchema } from "../validationSchema";
-import FormControl from "../../../components/FormControl";
+import FormControl from "../../components/FormControl";
+import FlexForm from "../../components/Form";
+import { SIGNUP_ROUTE } from "../../constants/routesPath";
 
-const LoginForm: FC = () => {
+import { LoginModel, initialValues } from "./loginModel";
+import { validationSchema } from "./validationSchema";
+
+const LoginForm = () => {
   const handleSubmit = (data: LoginModel) => {
     console.log(data);
   };
@@ -18,7 +20,7 @@ const LoginForm: FC = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      <Box component={Form}>
+      <FlexForm component={Form}>
         <FormControl name="email" label="Email address" />
         <FormControl type="password" name="password" label="Password" />
         <FormControl type="checkbox" name="remember" label="Remember me" />
@@ -26,7 +28,7 @@ const LoginForm: FC = () => {
           type="submit"
           variant="contained"
           size="large"
-          sx={{ mt: 4, mb: 2 }}
+          sx={{ mt: 2, mb: 2 }}
           fullWidth
         >
           Sign In
@@ -38,12 +40,12 @@ const LoginForm: FC = () => {
             </Link>
           </Grid>
           <Grid item>
-            <Link component={RouterLink} to="/">
+            <Link component={RouterLink} to={SIGNUP_ROUTE}>
               Don't have an account? Sign Up
             </Link>
           </Grid>
         </Grid>
-      </Box>
+      </FlexForm>
     </Formik>
   );
 };

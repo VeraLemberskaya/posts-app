@@ -1,7 +1,15 @@
-import Login from "./features/auth/Login";
+import { Route, Routes } from "react-router-dom";
+
+import { Login } from "./features/login";
+import SignUp from "./features/signup/SignUp";
 
 function App() {
-  return <Login />;
+  return (
+    <Routes>
+      <Route path="auth/login" element={<Login />} />
+      <Route path="auth/signup" element={<SignUp />} />
+    </Routes>
+  );
 }
 
 export default App;

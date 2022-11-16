@@ -27,7 +27,7 @@ type Props = Omit<TextFieldProps, "type">;
 const PasswordTextField = (props: Props) => {
   const [visible, setVisible] = useState<boolean>(false);
 
-  const toggleVisibility = () => {
+  const handleToggleVisibility = () => {
     setVisible((prevState) => !prevState);
   };
 
@@ -36,7 +36,10 @@ const PasswordTextField = (props: Props) => {
       type={visible ? "text" : "password"}
       InputProps={{
         endAdornment: (
-          <PasswordPostfix isVisible={visible} onClick={toggleVisibility} />
+          <PasswordPostfix
+            isVisible={visible}
+            onClick={handleToggleVisibility}
+          />
         ),
       }}
       {...props}
